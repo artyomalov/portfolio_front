@@ -1,0 +1,25 @@
+@import '../commonStyles.scss';
+
+.footer {
+  width: 100%;
+  height: 60px;
+  background-color: $backgroundColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $textColor;
+  // margin-top: 50px;
+}
+
+.footer__link {
+  margin-left: 40px;
+  text-decoration: none;
+  color: $textColor;
+  font-size: 15px;
+  &:focus,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: $textColor;
+  }
+}

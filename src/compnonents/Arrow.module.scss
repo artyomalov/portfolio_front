@@ -1,0 +1,48 @@
+@import '../commonStyles.scss';
+.slider__button {
+  width: 100px;
+  height: 100px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: $transition;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.slider__Arrow {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-top: 5px solid $backgroundColor;
+  border-left: 5px solid $backgroundColor;
+}
+
+@media (max-width: 950px) {
+  .slider__button {
+    width: 800px;
+    height: 80px;
+  }
+
+  .slider__Arrow {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-top: 4px solid $backgroundColor;
+    border-left: 4px solid $backgroundColor;
+  }
+}
+
+$arrowSize: 10px;
+$arrorBorderSize: 2px;
+
+@media (max-width: 800px) {
+  .slider__Arrow {
+    height: $arrowSize;
+    width: $arrowSize;
+    border-top: $arrorBorderSize solid $backgroundColor;
+    border-left: $arrorBorderSize solid $backgroundColor;
+  }
+}

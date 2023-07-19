@@ -1,0 +1,69 @@
+@import '../../commonStyles.scss';
+
+.projectData__main {
+  width: $width;
+  margin: 0 auto;
+  margin-top: 125px;
+}
+
+.projectData__title {
+  font-size: 35px;
+  color: $backgroundColor;
+}
+
+.projectData__description {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.projectData__designer {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.projectData__image {
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+@media (max-width: 1300px) {
+  .projectData__main {
+    width: $widthMedia1300;
+  }
+}
+
+@media (max-width: 950px) {
+  .projectData__main {
+    width: $widthMedia950;
+  }
+  .projectData__title {
+    font-size: 20px;
+  }
+  .projectData__description {
+    text-align: justify;
+    font-size: 17px;
+  }
+  .projectData__designer {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 530px) {
+  .projectData__main {
+    width: $widthMedia530;
+  }
+  .projectData__title {
+    font-size: 18px;
+  }
+  .projectData__description {
+    text-align: justify;
+    font-size: 16px;
+    height: 100px;
+    overflow: hidden;
+  }
+  .projectData__designer {
+    font-size: 15px;
+  }
+}

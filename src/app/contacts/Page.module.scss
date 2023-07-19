@@ -1,0 +1,30 @@
+@import '../../commonStyles.scss';
+
+.main {
+  width: 100%;
+  margin-top: 13vh;
+  margin-bottom: 44.5vh;
+}
+
+.main__container {
+  width: $width;
+  margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+  .main__container {
+    width: $widthMedia1300;
+  }
+}
+
+@media (max-width: 950px) {
+  .main__container {
+    width: $widthMedia950;
+  }
+}
+
+@media (max-width: 530px) {
+  .main__container {
+    width: $widthMedia530;
+  }
+}

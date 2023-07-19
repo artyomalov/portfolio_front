@@ -1,0 +1,47 @@
+@import '../commonStyles.scss';
+
+.preview__containerLink {
+  display: flex;
+  flex-basis: 49.5%;
+  margin-top: 20px;
+  height: max-content;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3 linear;
+}
+
+@media (max-width: 950px) {
+  .preview__containerLink {
+    flex-basis: 100%;
+  }
+}
+
+.preview__image {
+  width: 100%;
+}
+
+.preview__floatTitle {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  z-index: 999;
+  position: absolute;
+  transition: $transition;
+}
+
+.preview__Title {
+  width: 90%;
+  font-size: 20px;
+  position: absolute;
+  color: $textColor;
+  bottom: 20%;
+  right: 2%;
+  text-align: right;
+  font-weight: lighter;
+}
+
+.preview__containerLink:hover .preview__floatTitle {
+  opacity: 1;
+}
