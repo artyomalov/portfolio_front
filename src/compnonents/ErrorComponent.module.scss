@@ -1,0 +1,43 @@
+@import '../commonStyles.scss';
+.error {
+  width: 500px;
+  height: 100vh;
+  margin-top: 200px;
+}
+
+.error__title {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error__content {
+  width: 100%;
+  margin-top: 10px;
+  text-align: justify;
+  line-height: 22px;
+}
+
+.error__actionsContainer {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error__return,
+.error__return:visited,
+.error__return:focus,
+.error__reload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  height: 40px;
+  background-color: $backgroundColor;
+  color: $textColor;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+}

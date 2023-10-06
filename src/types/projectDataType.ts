@@ -5,7 +5,7 @@ export type ImageType = {
 };
 
 export type ProjectDataType = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   designer_name: string;

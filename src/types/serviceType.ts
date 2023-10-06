@@ -5,9 +5,3 @@ export type ServiceType = {
     serviceInfo: string;
 }
 
-export type DataType = {
-    id: string;
-    service_title: string;
-    service_price: number;
-    service_info: string;
-}

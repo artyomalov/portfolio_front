@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
 import React from 'react';
-import Tab from '@/compnonents/Tab';
+import Services from '../../compnonents/Services';
 import styles from './Page.module.scss';
 import baseURL from '@/constants/baseURL';
-import { DataType } from '@/types/serviceType';
-
+import { ServiceType } from '@/types/serviceType';
 export const metadata: Metadata = {
   title: 'Визуализация интерьеров, услуги',
-  description: 'Визуализация интерьеров в Москве и Санкт-Петербурге, список услуг',
+  description:
+    'Визуализация интерьеров в Москве и Санкт-Петербурге, список услуг',
   keywords: [
     'визуализация',
     'визуализатор',
@@ -20,35 +20,30 @@ export const metadata: Metadata = {
   ],
 };
 
-const getServises = async () => {
+const getServices = async (): Promise<ServiceType[]> => {
   const response = await fetch(`${baseURL}services`, {
     next: {
-      revalidate: 10,
+      revalidate: 86400,
     },
   });
-  const data = await response.json();
-  return data;
+  if (!response.ok) {
+    throw new Error();
+  }
+  const services = await response.json();
+  return services;
 };
 
-const Servises = async () => {
-  const data = await getServises();
+const Page: ({}: {}) => Promise<JSX.Element> = async () => {
+  const servicesList = await getServices();
   return (
     <main className={styles.main}>
       <div className={styles.main__container}>
-        {data.map((service: DataType) => {
-          return (
-            <Tab
-              key={service.id}
-              id={service.id}
-              serviceTitle={service.service_title}
-              servicePrice={service.service_price}
-              serviceInfo={service.service_info}
-            />
-          );
-        })}
+        <Services servicesList={servicesList} />
       </div>
     </main>
   );
 };
 
-export default Servises;
+export default Page;
+
+// : ({}: {}) => Promise<JSX.Element>

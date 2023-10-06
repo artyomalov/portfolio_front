@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
 };
 
-const ImageSlider: React.FC<Props> = (props) => {
+const Page: React.FC<Props> = (props) => {
   const imgLinks = props.searchParams.links.replaceAll('%_%', '/').split(',');
   const clickedImg = props.searchParams.clickedImageId;
   return (
@@ -40,4 +40,4 @@ const ImageSlider: React.FC<Props> = (props) => {
   );
 };
 
-export default ImageSlider;
+export default Page;

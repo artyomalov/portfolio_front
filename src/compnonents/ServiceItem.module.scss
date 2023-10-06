@@ -1,0 +1,43 @@
+@import '../commonStyles.scss';
+
+.service__item {
+  width: 100%;
+  background-color: $backgroundColor;
+
+  margin-bottom: 20px;
+  padding: 0 40px 0 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.service__header {
+  position: relative;
+  width: 40%;
+  margin: 30px 0px 30px 0px;
+  color: $textColor;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+}
+
+.service__info {
+  width: 100%;
+  height: 0;
+  margin: 40px 0px 40px 0;
+  overflow: hidden;
+  transition: $transition;
+  color: $textColor;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: justify;
+
+}
+
+.service__collapce {
+  height: 0;
+  overflow: hidden;
+  transition: $transition;
+}

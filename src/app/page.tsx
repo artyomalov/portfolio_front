@@ -1,16 +1,19 @@
-import styles from './page.module.scss';
 import ProjectPreviewType from '@/types/projectPreviewType';
 import ProjectPreview from '@/compnonents/ProjectPreview';
 import baseURL from '@/constants/baseURL';
 import { Metadata } from 'next';
+import styles from './Page.module.scss';
 
 const getProjects = async (): Promise<ProjectPreviewType[]> => {
   const response = await fetch(`${baseURL}projects`, {
     next: {
-      revalidate: 20,
       // revalidate: 86400,
+      revalidate: 20,
     },
   });
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
   const data = await response.json();
   return data;
 };
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
   ],
 };
 
-const Home = async () => {
+const Page: ({}: {}) => Promise<JSX.Element>  = async () => {
   const projects = await getProjects();
   return (
     <main className={styles.main}>
@@ -46,4 +49,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Page;

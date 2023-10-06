@@ -1,0 +1,71 @@
+@import '../commonStyles.scss';
+
+.header__linksContainer {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 1300px) {
+  .header__linksContainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 950px) {
+  .header__linksContainer {
+    width: 60%;
+  }
+  .header__link,
+  .header__linkActive {
+    font-size: 18px !important;
+    &:focus,
+    &:visited,
+    &:active {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  .header__linksContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header__link,
+  .header__linkActive {
+    margin: 0;
+    font-size: 15px !important;
+    &:focus,
+    &:visited,
+    &:active {
+      font-size: 15px;
+    }
+  }
+}
+
+.header__link {
+  text-decoration: none;
+  color: $textColor;
+  font-size: 20px;
+  &:focus,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: $textColor;
+  }
+}
+
+.header__linkActive {
+  text-decoration: none;
+  color: $activeLinkColor;
+  font-size: 20px;
+  &:focus,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: $activeLinkColor;
+  }
+}

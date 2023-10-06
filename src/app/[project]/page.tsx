@@ -4,22 +4,59 @@ import baseURL from '@/constants/baseURL';
 import styles from './Page.module.scss';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+import ProjectPreviewType from '@/types/projectPreviewType';
 
-const getProject = async (project_id: number): Promise<ProjectDataType> => {
-  const data = await fetch(`${baseURL}project/${project_id}`);
-  const project = await data.json();
-  return project;
+const getProject = async (project_id: string): Promise<ProjectDataType> => {
+  const response = await fetch(`${baseURL}project/${project_id}`, {
+    next: {
+      revalidate: 86400,
+    },
+  });
+  if (response.status === 404) {
+    return notFound();
+    // throw new Error('Failed to fetch data');
+  }
+  const data = await response.json();
+  return data;
 };
 
 type Props = {
   params: {
-    project: number;
+    project: string;
   };
+};
+
+export const generateStaticParams = async (): Promise<
+  { project: string }[]
+> => {
+  try {
+    const response = await fetch(`${baseURL}projects`);
+    if (!response) {
+      throw new Error();
+    }
+    const projects = await response.json();
+
+    return projects.map((project: ProjectPreviewType) => {
+      return {
+        project: project.id.toString(),
+      };
+    });
+  } catch {
+    return [
+      {
+        project: '0',
+      },
+    ];
+  }
 };
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const project = await getProject(props.params.project);
 
+  if (!project) {
+    throw new Error();
+  }
   return {
     title: `${project.title}`,
     description: `${project.description}`,
@@ -36,8 +73,9 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   };
 };
 
-const Project = async (props: Props) => {
+const Page: (props: Props) => Promise<JSX.Element> = async (props: Props) => {
   const project_data: ProjectDataType = await getProject(props.params.project);
+
   const noAltImages = project_data.images.map((image) => image.imageUrl);
   const stringifiedData = noAltImages.toString();
   const replacedSlashData = stringifiedData.replaceAll('/', '%_%');
@@ -79,4 +117,4 @@ const Project = async (props: Props) => {
   );
 };
 
-export default Project;
+export default Page;

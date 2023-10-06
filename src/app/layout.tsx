@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import './globals.scss';
 import { Roboto } from 'next/font/google';
 import Header from '@/compnonents/Header';
 import Footer from '@/compnonents/Footer';
+import React from 'react';
 
 const roboto = Roboto({
   weight: ['400', '700'],

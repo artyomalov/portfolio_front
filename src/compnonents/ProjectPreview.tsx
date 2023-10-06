@@ -7,7 +7,6 @@ type Props = {
 };
 
 const ProjectPreview: React.FC<Props> = (props) => {
-  console.log(props.projectPreview.preview.altDescription)
   return (
     <Link
       className={styles.preview__containerLink}
